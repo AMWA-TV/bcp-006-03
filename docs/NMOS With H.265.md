@@ -42,7 +42,7 @@ The [Video Services Forum][VSF] developed Technical Recommendation [TR-10-11][TR
 
 TR-10-11 and TR-10-?? mandate the use of the AMWA [IS-04][IS-04] and [IS-05][IS-05] NMOS Specifications in IPMX compliant systems.
 
-AMWA IS-04 and IS-05 have support for various transport protocols and can signal the media type `video/H265` as defined in RFC 6184.
+AMWA IS-04 and IS-05 have support for various transport protocols and can signal the media type `video/H265` as defined in RFC 7798.
 
 ## Use of Normative Language
 
