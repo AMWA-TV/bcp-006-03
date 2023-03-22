@@ -33,7 +33,7 @@ A companion RTP payload format specification was developed through the IETF Payl
 The BCP-006-03 specification includes support for bitstreams that are compliant with the clauses of the main document and annexes A, B, C, D and E of the [ITU-T H.265][H.265] | ISO/IEC 23008 specification. It excludes support for bitstreams that are compliant with other annexes of the specification.
 > Annex F (multi-layers extensions), Annex G (multiview high efficiency video coding), Annex H (scalable high efficiency video coding) and Annex I (3D high efficiency video coding) are not supported.
 
-The [ITU H.222][H.222] specification and associated amendments describe the embedding of an H.265 stream in an MPEG2-TS transport stream. An RTP payload format specification for MPEG2-TS transport stream was developed through the IETF Payloads working group, IETF [RFC 2550][RFC-2550] for transport over RTP. Other normative documents may describe the requirements for the streaming of an MPEG2-TS transport stream over other non-RTP transports.
+The [ITU H.222.0][H.222.0] specification and associated amendments describe the embedding of an H.265 stream in an MPEG2-TS transport stream. An RTP payload format specification for MPEG2-TS transport stream was developed through the IETF Payloads working group, IETF [RFC 2550][RFC-2550] for transport over RTP. Other normative documents may describe the requirements for the streaming of an MPEG2-TS transport stream over other non-RTP transports.
 
 The [Society of Media Professionals, Technologists and Engineers][SMPTE] developed Standard [ST 2110-22][ST-2110-22] of the ST 2110 suite of protocols, which cover the end-to-end application use of constant bitrate compression for video over managed IP networks.
 > Note that the definition of constant bitrate of ST 2110-22 is very strict "The video compression or the packetization of the video compression shall produce a constant number of bytes per frame. The packetization shall produce a constant number of RTP packets per frame.". This definition of constant bitrate is hereafter described as strict-CBR, using the H.265 definition of constant bitrate for CBR.
@@ -69,8 +69,8 @@ The Source resource MUST indicate `urn:x-nmos:format:video` for the `format` att
 ### Flows
 
 The Flow resource MUST indicate `video/H265` in the `media_type` attribute, and `urn:x-nmos:format:video` for the `format` attribute. This has been permitted since IS-04 v1.1. 
-- H.265 Flow resources MAY be associated with many Senders at the same time through the Sender's `flow_id` attribute. The H.265 Flow is therefore unaffected by the use of a specific transport. 
-- H.265 Flow resources MAY be associated with many Flows at the same time trough the Flow's `parents` attribute. The H.265 Flow is therefore unaffected by being the parent of some other Flows.
+- H.265 Flow resources MAY be associated with many Senders at the same time through the Senders' `flow_id` attributes. The H.265 Flow is therefore unaffected by the use of a specific transport. 
+- H.265 Flow resources MAY be associated with many Flows at the same time through the Flows' `parents` attributes. The H.265 Flow is therefore unaffected by being the parent of some other Flows.
 
 For Nodes implementing IS-04 v1.3 or higher, the following additional requirements on the Flow resource apply.
 
@@ -81,15 +81,15 @@ These attributes provide information for Controllers and Users to evaluate strea
 - [Components](https://specs.amwa.tv/nmos-parameter-registers/branches/main/flow-attributes/#components)
   The Flow resource MUST indicate the color (sub-)sampling, width, height and depth of the associated uncompressed picture using the `components` attribute. The `components` array values MUST correspond to the stream's active parameter sets values. A Flow MUST track the stream's current active parameter sets.
 
-Informative note: ST 2110-22 does not require the `sampling` or `depth` SDP parameters. RFC 6184 does not define any such SDP parameters. The `sampling`, `width`, `height` and `depth` of the associated uncompressed picture must be derived from the H.265 active parameter sets by a Receiver.
+Informative note: ST 2110-22 does not require the `sampling` or `depth` SDP parameters. RFC 6184 does not define any such SDP parameters. The `sampling` and `depth` of the associated uncompressed picture could be derived from the H.265 active parameter sets by a Receiver.
 
 - [Profile](https://specs.amwa.tv/nmos-parameter-registers/branches/main/flow-attributes/#profile)
 The Flow resource MUST indicate the H.265 profile, which defines algorithmic features and limits that SHALL be supported by all decoders conforming to that profile. It SHALL comply with the stream's active parameter sets. The permitted `profile` values are strings, defined as per ITU-T Rec. H.265 Annex A
 
   - "Main" (Default if not specified in the SDP transport file)
   - "Main10"
-  - "Main10Still"
-  - "MainStill"
+  - "Main10StillPicture"
+  - "MainStillPicture"
   - "Monochrome"
   - "Monochrome10"
   - "Monochrome12"
@@ -109,8 +109,8 @@ The Flow resource MUST indicate the H.265 profile, which defines algorithmic fea
   - "Main10Intra-444"
   - "Main12Intra-444"
   - "Main16Intra-444"
-  - "MainStill-444"
-  - "Main16Still-444"
+  - "MainStillPicture-444"
+  - "Main16StillPicture-444"
   - "HighThroughput-444"
   - "HighThroughput10-444"
   - "HighThroughput14-444"
@@ -123,19 +123,23 @@ The Flow resource MUST indicate the H.265 profile, which defines algorithmic fea
   - "ScreenExtendedHighThroughput10-444"
   - "ScreenExtendedHighThroughput14-444"
 
+Informative note: The names of the profiles in string form have been derived from the names used at Annex A of the H.265 standard with whitespace omitted and the sampling mode always positioned at the end of the string, preceded by a '-'.
+
+The [NMOS Parameter Registers] is the official reference for the profiles strings. In the case of discrepancies between this specification and the [NMOS Parameter Registers], the registers have precedence.
+
 The Flow's `profile` attribute maps to the `profile-space`, `profile-id`, `profile-compatibility-indicator`, `interop-constraints` parameters of the SDP transport file. See section SDP format-specific parameters.
 
 The Flow's `profile` attribute maps to the members profile_space, profile_idc, profile_compatibility_indication, progressive_source_flag, interlaced_source_flag, non_packed_constraint_flag, frame_only_constraint_flag and copied_44bits and  of the HEVC_video_descriptor of an MPEG2-TS transport stream. See section Multiplexed Flows.
 
 - [Level](https://specs.amwa.tv/nmos-parameter-registers/branches/main/flow-attributes/#level)
  The Flow resource MUST indicate the H.265 level, which defines a set of limits on the values that may be taken by the syntax elements of an H.265 bitstream.  It SHALL comply with the stream's active parameter sets. The permitted `level` values are strings, defined as per ITU-T Rec. H.265 Annex A
-  - "1"
-  - "2", "2.1"
-  - "3"
-  - "3.1" (Default if not specified in the SDP transport file)
-  - "4", "4.1"
-  - "5", "5.1", "5.2"
-  - "6", "6.1", "6.2"
+  - "Main-1"
+  - "Main-2", "Main-2.1"
+  - "Main-3"
+  - "Main-3.1" (Default if not specified in the SDP transport file)
+  - "Main-4", "Main-4.1"
+  - "Main-5", "Main-5.1", "Main-5.2"
+  - "Main-6", "Main-6.1", "Main-6.2"
   - "High-1"
   - "High-2", "High-2.1"
   - "High-3", "High-3.1"
@@ -143,6 +147,10 @@ The Flow's `profile` attribute maps to the members profile_space, profile_idc, p
   - "High-5", "High-5.1", "High-5.2"
   - "High-6", "High-6.1", "High-6.2"
   - "High-8.5"
+
+Informative note: The names of the levels in string form have been derived from the names used at Annex A of the H.265 standard where the tier name prefixes the level number.
+
+The [NMOS Parameter Registers] is the official reference for the levels strings. In the case of discrepancies between this specification and the [NMOS Parameter Registers], the registers have precedence.
 
 The Flow's `level` attribute map to the `level-id` and `tier-flag` parameters of the SDP transport file. See section SDP format-specific parameters.
 
@@ -212,7 +220,7 @@ If the Sender meets the traffic shaping and delivery timing requirements specifi
 
 [BCP-004-01]: https://specs.amwa.tv/bcp-004-01/ "AMWA BCP-004-01 NMOS Receiver Capabilities"
 [H.265]: https://www.itu.int/rec/T-REC-H.265 "High efficiency video coding"
-[H.222]: https://www.itu.int/rec/T-REC-H.222.0 "Generic coding of moving pictures and associated audio information: Systems"
+[H.222.0]: https://www.itu.int/rec/T-REC-H.222.0 "Generic coding of moving pictures and associated audio information: Systems"
 [RFC-2119]: https://tools.ietf.org/html/rfc2119 "Key words for use in RFCs"
 [RFC-7798]: https://tools.ietf.org/html/rfc7798 "RTP Payload Format for High Efficiency Video Coding (HEVC)"
 [RFC-2250]: https://www.rfc-editor.org/rfc/rfc2250 "RTP Payload Format for MPEG1/MPEG2 Video"
