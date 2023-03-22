@@ -30,10 +30,10 @@ _(c) AMWA 2023, CC Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)_
 H.265 is a technology standardized in Rec. [ITU-T H.265][H.265] | ISO/IEC 23008 for video contribution at high compression rate and video quality.
 A companion RTP payload format specification was developed through the IETF Payloads working group, IETF [RFC 7798][RFC-7798] for the transport of an H.265 bitstream over RTP.
 
-The BCP-006-03 specification includes support for bitstreams that are compliant with the clauses of the main document and annexes A, B, C, D and E of the [ITU-T H.265][H.265] specification. It excludes support for bitstreams that are compliant with other annexes of the specification.
+The BCP-006-03 specification includes support for bitstreams that are compliant with the clauses of the main document and annexes A, B, C, D and E of the Rec. [ITU-T H.265][H.265] specification. It excludes support for bitstreams that are compliant with other annexes of the specification.
 > Annex F (multi-layers extensions), Annex G (multiview high efficiency video coding), Annex H (scalable high efficiency video coding) and Annex I (3D high efficiency video coding) are not supported.
 
-The [ITU H.222.0][H.222.0] specification and associated amendments describe the embedding of an H.265 stream in an MPEG2-TS transport stream. An RTP payload format specification for MPEG2-TS transport stream was developed through the IETF Payloads working group, IETF [RFC 2550][RFC-2550] for transport over RTP. Other normative documents describe the requirements for the streaming of an MPEG2-TS transport stream over other non-RTP transports.
+The Rec. [ITU-T H.222.0][H.222.0] specification and associated amendments describe the embedding of an H.265 stream in an MPEG2-TS transport stream. An RTP payload format specification for MPEG2-TS transport stream was developed through the IETF Payloads working group, IETF [RFC 2550][RFC-2550] for transport over RTP. Other normative documents describe the requirements for the streaming of an MPEG2-TS transport stream over other non-RTP transports.
 
 The [Society of Media Professionals, Technologists and Engineers][SMPTE] developed Standard [ST 2110-22][ST-2110-22] of the ST 2110 suite of protocols, which cover the end-to-end application use of constant bitrate compression for video over managed IP networks.
 > Note that the definition of constant bitrate of ST 2110-22 is very strict "The video compression or the packetization of the video compression shall produce a constant number of bytes per frame. The packetization shall produce a constant number of RTP packets per frame.". This definition of constant bitrate is hereafter described as strict-CBR, using the H.265 definition of constant bitrate for CBR.
@@ -55,7 +55,7 @@ The NMOS terms 'Controller', 'Node', 'Source', 'Flow', 'Sender', 'Receiver' are 
 
 The term 'strict-CBR' corresponds to the definition of constant bit-rate at section 4 "Video Compression and Packetization" of the ST 2110-22 standard.
 
-The terms CBR and VBR are defined in the [ITU-T H.265][H.265] standard.
+The terms CBR and VBR are defined in the Rec. [ITU-T H.265][H.265] standard.
 
 ## H.265 IS-04 Sources, Flows and Senders
 ### Sources
