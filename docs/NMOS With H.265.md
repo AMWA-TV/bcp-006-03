@@ -84,7 +84,7 @@ These attributes provide information for Controllers and Users to evaluate strea
 Informative note: ST 2110-22 does not require the `sampling` or `depth` SDP parameters. RFC 6184 does not define any such SDP parameters. The `sampling` and `depth` of the associated uncompressed picture could be derived from the H.265 active parameter sets by a Receiver.
 
 - [Profile](https://specs.amwa.tv/nmos-parameter-registers/branches/main/flow-attributes/#profile)
-The Flow resource MUST indicate the H.265 profile, which defines algorithmic features and limits that MUST be supported by all decoders conforming to that profile. It MUST comply with the stream's active parameter sets. The permitted `profile` values are strings, defined as per ITU-T Rec. H.265 Annex A
+The Flow resource MUST indicate the H.265 profile, which defines algorithmic features and limits that MUST be supported by all decoders conforming to that profile. The stream's active parameter sets MUST be compliant with the `profile` attribute of the Flow. The permitted `profile` values are strings, defined as per ITU-T Rec. H.265 Annex A
 
   - "Main" (Default if not specified in the SDP transport file)
   - "Main10"
@@ -132,7 +132,7 @@ The Flow's `profile` attribute maps to the `profile-space`, `profile-id`, `profi
 The Flow's `profile` attribute maps to the members profile_space, profile_idc, profile_compatibility_indication, progressive_source_flag, interlaced_source_flag, non_packed_constraint_flag, frame_only_constraint_flag and copied_44bits and  of the HEVC_video_descriptor of an MPEG2-TS transport stream. See section Multiplexed Flows.
 
 - [Level](https://specs.amwa.tv/nmos-parameter-registers/branches/main/flow-attributes/#level)
- The Flow resource MUST indicate the H.265 level, which defines a set of limits on the values that may be taken by the syntax elements of an H.265 bitstream.  It MUST comply with the stream's active parameter sets. The permitted `level` values are strings, defined as per ITU-T Rec. H.265 Annex A
+ The Flow resource MUST indicate the H.265 level, which defines a set of limits on the values that may be taken by the syntax elements of an H.265 bitstream. The stream's active parameter sets MUST be compliant with the `level` attribute of the Flow. The permitted `level` values are strings, defined as per ITU-T Rec. H.265 Annex A
   - "Main-1"
   - "Main-2", "Main-2.1"
   - "Main-3"
