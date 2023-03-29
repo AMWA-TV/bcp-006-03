@@ -157,7 +157,7 @@ The Flow's `level` attribute map to the members level_idc and tier_flag of the H
 Informative note: The Flow's `profile` and `level` attributes are always required. The SDP transport file `profile-space`, `profile-id`, `profile-compatibility-indicator`, `interop-constraints`, `level-id` and `tier-flag` parameters MAY be omitted when matching the default value.
 
 - [Bit Rate](https://specs.amwa.tv/nmos-parameter-registers/branches/main/flow-attributes/#bit-rate)
-  The Flow resource MUST indicate the target encoding bit rate (kilobits/second) of the H.265 bitstream. It MUST comply with the stream's active parameter sets. The `bit_rate` integer value is expressed in units of 1000 bits per second, rounding up.
+  The Flow resource MUST indicate the target encoding bit rate (kilobits/second) of the H.265 bitstream. The stream's active parameter sets MUST be compliant with the `bit_rate` attribute of the Flow. The `bit_rate` integer value is expressed in units of 1000 bits per second, rounding up.
 
   Informative note: The H.265 bitstream is not required to transport hypothetical reference decoder (HRD) parameters such that an H.265 decoder may not know the actual target bit rate of a stream. There are bit rate limits imposed by the level of the coded bitstream. IS-11 may be used to constraint the Sender to a target bit rate compatible with the Receiver Capabilities.
 
@@ -191,7 +191,7 @@ Therefore:
 
 - The `sprop-vps`, `sprop-sps` and `sprop-pps` MUST always be included if the Sender `parameter_sets_transport_mode` property is `out_of_band` and SHOULD be included if the property is `in_and_out_of_band`.
 
-The format-specific parameters declared in the "fmtp=" attribute of an SDP transport file except `sprop-vps`, `sprop-sps` and `sprop-pps` MUST comply with the stream's active parameter sets.
+The stream's active parameter sets MUST be compliant with the format-specific parameters, except `sprop-vps`, `sprop-sps` and `sprop-pps`, declared in the "fmtp=" attribute of an SDP transport file.
 
 If the Sender meets the traffic shaping and delivery timing requirements specified for ST 2110-22, the SDP transport file MUST also comply with the provisions of ST 2110-22.
 
