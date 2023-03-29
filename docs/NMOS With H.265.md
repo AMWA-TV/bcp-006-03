@@ -27,7 +27,7 @@ _(c) AMWA 2023, CC Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)_
 
 ## Introduction
 
-H.265 is a technology standardized in Rec. [ITU-T H.265][H.265] | ISO/IEC 23008-2 for video compression at high quality.
+H.265 is a video compression technology standardized in Rec. [ITU-T H.265][H.265] | ISO/IEC 23008-2.
 A companion RTP payload format specification was developed through the IETF Payloads working group, IETF [RFC 7798][RFC-7798] for the transport of an H.265 bitstream over RTP.
 
 The BCP-006-03 specification includes support for bitstreams that are compliant with the clauses of the main document and annexes A, B, C, D and E of the Rec. [ITU-T H.265][H.265] specification. It excludes support for bitstreams that are compliant with other annexes of the specification.
