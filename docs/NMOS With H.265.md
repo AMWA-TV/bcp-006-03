@@ -11,7 +11,7 @@ _(c) AMWA 2023, CC Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)_
 ## Introduction
 
 H.265 is a video compression technology standardized in Rec. [ITU-T H.265][H.265] | ISO/IEC 23008-2.
-A companion RTP payload format specification was developed through the IETF Payloads working group, IETF [RFC 7798][RFC-7798] for the transport of an H.265 bitstream over RTP. 
+A companion RTP payload format specification was developed through the IETF Payloads working group, IETF [RFC 7798][RFC-7798] for the transport of an H.265 bitstream over RTP.
 
 The BCP-006-03 specification includes support for bitstreams that are compliant with the clauses of the main document and annexes A, B, C, D and E of the Rec. [ITU-T H.265][H.265] specification. It excludes support for bitstreams that are compliant with other annexes of the specification.
 > Annex F (multi-layers extensions), Annex G (multiview high efficiency video coding), Annex H (scalable high efficiency video coding) and Annex I (3D high efficiency video coding) are not supported.
@@ -62,7 +62,7 @@ In addition to those attributes defined in IS-04 for all coded video Flows, the 
 
 These attributes provide information for Controllers and Users to evaluate stream compatibility between Senders and Receivers.
 
-- [Components](https://specs.amwa.tv/nmos-parameter-registers/branches/main/flow-attributes/#components)
+- [Components](https://specs.amwa.tv/nmos-parameter-registers/branches/main/flow-attributes/#components)  
   The Flow resource MUST indicate the color (sub-)sampling, width, height and depth of the associated uncompressed picture using the `components` attribute. The `components` array values MUST correspond to the stream's active parameter sets. A Flow MUST track the stream's current active parameter sets.
 
 - [Profile](https://specs.amwa.tv/nmos-parameter-registers/branches/main/flow-attributes/#profile)  
@@ -176,7 +176,7 @@ In addition to those attributes defined in IS-04 for Senders, the following attr
 - [Parameter Sets Transport Mode](https://specs.amwa.tv/nmos-parameter-registers/branches/main/sender-attributes/#parameter-sets-transport-mode)  
   A Sender operating with out-of-band parameter sets MUST set the `parameter_sets_transport_mode` attribute to either `out_of_band` or `in_and_out_of_band`. Otherwise it MAY omit or set the `parameter_sets_transport_mode` attribute to `in_band`. If unspecified the default value is `in_band`. See the [Parameter Sets](#parameter-sets) section for more details.
 
-  An example Sender resource is provided in the [Examples](../examples/).
+An example Sender resource is provided in the [Examples](../examples/).
 
 ##### SDP format-specific parameters
 
@@ -222,7 +222,7 @@ The `manifest_href` attribute MAY be `null` if an SDP transport file is not supp
 - [Parameter Sets Transport Mode](https://specs.amwa.tv/nmos-parameter-registers/branches/main/sender-attributes/#parameter-sets-transport-mode)  
   A Sender operating with out-of-band parameter sets MUST set the `parameter_sets_transport_mode` attribute to either `out_of_band` or `in_and_out_of_band`. Otherwise it MAY omit or set the `parameter_sets_transport_mode` attribute to `in_band`. If unspecified the default value is `in_band`. See the [Parameter Sets](#parameter-sets) section for more details.
 
-Informative note: The out of band mechanism used to transmit parameter sets is transport specific and out of the scope of this specification.
+  Informative note: The out of band mechanism used to transmit parameter sets is transport specific and out of the scope of this specification.
 
 ## H.265 IS-04 Receivers
 
@@ -347,21 +347,21 @@ For Receivers indicating `urn:x-nmos:format:mux` for the `format` attribute, the
 
 ### RTP transport
 
-  Connection Management using IS-05 proceeds in exactly the same manner as for any other stream format carried within RTP.
+Connection Management using IS-05 proceeds in exactly the same manner as for any other stream format carried within RTP.
 
-  If IS-04 Sender `manifest_href` is not `null`, the SDP transport file at the **/transportfile** endpoint on an IS-05 Sender MUST comply with the same requirements described for the SDP transport file at the IS-04 Sender `manifest_href`.
+If IS-04 Sender `manifest_href` is not `null`, the SDP transport file at the **/transportfile** endpoint on an IS-05 Sender MUST comply with the same requirements described for the SDP transport file at the IS-04 Sender `manifest_href`.
 
 A `PATCH` request on the **/staged** endpoint of an IS-05 Receiver can contain an SDP transport file in the `transport_file` attribute. The SDP transport file for a H.265 stream is expected to comply with RFC 7798 and, if appropriate, ST 2110-22 or IPMX. It need not comply with the additional requirements specified for SDP transport files at Senders.
 
-  If the Receiver is not capable of consuming the stream described by a `PATCH` on the **/staged** endpoint, it SHOULD reject the request. If it is unable to assess the stream compatibility because some parameters are not included `PATCH` request, it MAY accept the request and postpone stream compatibility assessment.
+If the Receiver is not capable of consuming the stream described by a `PATCH` on the **/staged** endpoint, it SHOULD reject the request. If it is unable to assess the stream compatibility because some parameters are not included `PATCH` request, it MAY accept the request and postpone stream compatibility assessment.
 
 ### Other transports
 
-  Connection Management using IS-05 proceeds in exactly the same manner as for any other stream format carried within other transports.
+Connection Management using IS-05 proceeds in exactly the same manner as for any other stream format carried within other transports.
 
-  If IS-04 Sender `manifest_href` is not `null`, the SDP transport file at the **/transportfile** endpoint on an IS-05 Sender MUST comply with the same requirements described for the SDP transport file at the IS-04 Sender `manifest_href`.
+If IS-04 Sender `manifest_href` is not `null`, the SDP transport file at the **/transportfile** endpoint on an IS-05 Sender MUST comply with the same requirements described for the SDP transport file at the IS-04 Sender `manifest_href`.
 
-  If the Receiver is not capable of consuming the stream described by a `PATCH` on the **/staged** endpoint, it SHOULD reject the request. If it is unable to assess the stream compatibility because some parameters are not included `PATCH` request, it MAY accept the request and postpone stream compatibility assessment.
+If the Receiver is not capable of consuming the stream described by a `PATCH` on the **/staged** endpoint, it SHOULD reject the request. If it is unable to assess the stream compatibility because some parameters are not included `PATCH` request, it MAY accept the request and postpone stream compatibility assessment.
 
 ## Parameter Sets
 
