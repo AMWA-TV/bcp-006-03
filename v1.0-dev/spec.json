@@ -1,0 +1,25 @@
+{
+  "amwa_id": "BCP-006-03",
+  "url": "https://specs.amwa.tv/bcp-006-03",
+  "name": "NMOS With H.265",
+  "status": "Work In Progress",
+  "repo_name": "bcp-006-03",
+  "alt_repo_name": "bcp-nmos-h265",
+  "repo_url": "https://github.com/AMWA-TV/bcp-006-03",
+  "releases": null,
+  "default_branch": "v1.0-dev",
+  "show_in_index": true,
+  "intro": {
+    "what_does_it_do": [
+      "Enables Registration, Discovery, and Connection Management of H.265 Endpoints using the AMWA IS-04, IS-05 and IS-11 NMOS Specifications."
+    ],
+    "why_does_it_matter": [
+      "It helps ensure consistency between implementations offering NMOS control for H.265 endpoints."
+    ],
+    "how_does_it_work": [
+      "It specifies what resources and attributes MUST be provided when using NMOS with [H.265][] streams.",
+      "It specifies requirements for SDP when it is used with a transport supporting SDP transport files.",
+      "It provides examples of how to use IS-04, IS-05 and IS-11 in the context of H.265 streams - specifically H.265 encapsulated in RTP as described in IETF [RFC 7798][RFC-7798]. It also describe to some extents how to use H.265 with RTP and other transports that encapsulate the H.264 video streams in an MPEG2-TS transport stream."
+    ]
+  }
+}
